@@ -38,4 +38,6 @@ object BlazePlugin extends AutoPlugin {
   // Also note that only java8 and above has the require cipher suite for http2.
   lazy val alpn_boot           = "org.eclipse.jetty"          % "jetty-alpn-openjdk8-client" % "9.4.28.v20200408"
 
+  lazy val scodecCore          = "org.scodec"                 %% "scodec-core"         % "1.11.7"
+
 }

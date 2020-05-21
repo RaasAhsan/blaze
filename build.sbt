@@ -73,6 +73,22 @@ lazy val http = Project("blaze-http", file("http"))
     ).map(_ % Test)
   ).dependsOn(core % "test->test;compile->compile")
 
+lazy val quic = Project("blaze-quic", file("quic"))
+  .enablePlugins(Http4sOrgPlugin)
+  .disablePlugins(TpolecatPlugin)
+  .settings(commonSettings)
+  .settings(
+    // General Dependencies
+    libraryDependencies ++= Seq(
+      scodecCore
+    ),
+    // Test Dependencies
+    libraryDependencies ++= Seq(
+      scalacheck,
+      specs2Scalacheck
+    ).map(_ % Test)
+  )
+
 lazy val examples = Project("blaze-examples",file("examples"))
   .enablePlugins(AlpnBootPlugin, PrivateProjectPlugin)
   .disablePlugins(TpolecatPlugin)
